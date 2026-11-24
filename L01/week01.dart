@@ -1,6 +1,6 @@
 // ============================================================
 // L01 — Dart พื้นฐาน (ITE-439 สัปดาห์ที่ 1)
-// ชื่อ-สกุล: ______________________  รหัสนักศึกษา: ____________
+// ชื่อ-สกุล: Attakorn  Chamroen  รหัสนักศึกษา: 2413110905
 // ============================================================
 //
 // วิธีทำ
@@ -45,7 +45,8 @@ void main() {
 // ------------------------------------------------------------
 String bmi(double weight, double height) {
   // TODO: เขียนโค้ดตรงนี้
-  return '';
+  final double bmiValue = weight / (height * height);
+  return bmiValue.toStringAsFixed(2);
 }
 
 // ------------------------------------------------------------
@@ -60,17 +61,19 @@ String bmi(double weight, double height) {
 // ------------------------------------------------------------
 String average(List<int> numbers) {
   // TODO
-  return '';
+  final double sum = numbers.fold(0, (a, b) => a + b);
+  final double avg = sum / numbers.length;
+  return avg.toStringAsFixed(2);
 }
 
 int highest(List<int> numbers) {
   // TODO
-  return 0;
+  return numbers.reduce((a, b) => a > b ? a : b);
 }
 
 int lowest(List<int> numbers) {
   // TODO
-  return 0;
+  return numbers.reduce((a, b) => a < b ? a : b);
 }
 
 // ------------------------------------------------------------
@@ -92,7 +95,11 @@ const List<Map<String, dynamic>> students = [
 
 List<String> topStudentNames(List<Map<String, dynamic>> list) {
   // TODO
-  return [];
+  final topStudents = list
+      .where((s) => (s['score'] as int) >= 80)
+      .map((s) => s['name'] as String)
+      .toList();
+  return topStudents;
 }
 
 // ------------------------------------------------------------
